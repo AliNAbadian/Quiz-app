@@ -1,3 +1,39 @@
+# Quiz App
+
+This is a simple quiz application built with HTML, CSS, and JavaScript. It presents users with a series of questions and multiple-choice answers. Users can select an answer, and the application will indicate whether it is correct or incorrect. At the end of the quiz, the user's score is displayed.
+
+## Questions
+
+1. Which is the largest Animal in the world
+
+   - [ ] Shark
+   - [x] Blue Whale
+   - [ ] Elephant
+   - [ ] Rhino
+
+2. Which is the Smallest Country in the world
+
+   - [x] Vatican City
+   - [ ] Bhutan
+   - [ ] Nepal
+   - [ ] Shri Lanka
+
+3. Which is the largest Desert in the world
+
+   - [ ] Kalahari
+   - [ ] Gobi
+   - [ ] Sahara
+   - [x] Antarctica
+
+4. Which is the Smallest Continent in the world
+   - [ ] Asia
+   - [x] Australia
+   - [ ] Arctic
+   - [ ] Africa
+
+## Logic
+
+```javascript
 const questions = [
   {
     question: "Which is the largest Animal in the world",
@@ -21,7 +57,7 @@ const questions = [
     question: "Which is the largest Desert in the world",
     answers: [
       { text: "Kalahari", correct: false },
-      { text: "Gobi", correct: false },
+      { text: "Gobi", correct: true },
       { text: "Sahara", correct: false },
       { text: "Antarctica", correct: true },
     ],
@@ -50,6 +86,7 @@ function startQuiz() {
   nextButton.innerHTML = "Next";
   showQuestion();
 }
+
 function showQuestion() {
   resetState();
   let currentQuestion = questions[currentQuestionIndex];
@@ -80,6 +117,7 @@ function selectAnswer(e) {
   const isCorrect = selectedBtn.dataset.correct === "true";
   if (isCorrect) {
     selectedBtn.classList.add("correct");
+    score++;
   } else {
     selectedBtn.classList.add("incorrect");
   }
@@ -101,7 +139,7 @@ function showScore() {
 
 function handleNextButton() {
   currentQuestionIndex++;
-  if (currentQuestionIndex < question.length) {
+  if (currentQuestionIndex < questions.length) {
     showQuestion();
   } else {
     showScore();
@@ -115,5 +153,22 @@ nextButton.addEventListener("click", () => {
     startQuiz();
   }
 });
+
 startQuiz();
-//console.log(questionElement);
+```
+
+## Usage
+
+1. Open the `index.html` file in your web browser.
+2. The quiz will start automatically.
+3. Read each question carefully and select the answer you believe is correct.
+4. After selecting an answer, click "Next" to proceed to the next question.
+5. At the end of the quiz, your score will be displayed.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Fork the repository and submit a pull request with your changes.
