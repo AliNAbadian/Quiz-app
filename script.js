@@ -80,6 +80,7 @@ function selectAnswer(e) {
   const isCorrect = selectedBtn.dataset.correct === "true";
   if (isCorrect) {
     selectedBtn.classList.add("correct");
+    score++; // Increment the score only if the answer is correct
   } else {
     selectedBtn.classList.add("incorrect");
   }
@@ -101,7 +102,7 @@ function showScore() {
 
 function handleNextButton() {
   currentQuestionIndex++;
-  if (currentQuestionIndex < question.length) {
+  if (currentQuestionIndex < questions.length) {
     showQuestion();
   } else {
     showScore();
